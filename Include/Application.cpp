@@ -11,8 +11,8 @@ Dolly::Application::Application()
 
 	if (display == nullptr)
 	{
-		Levin::Error() << "Not is possible open the Display." << Levin::endl;
-		// Termine the program, is not possible continue with the display.
+		Levin::Error() << "Not is possible connect to X server." << Levin::endl;
+		// Terminate the program, is not possible continue with the display.
 		std::terminate();
 	}
 
@@ -20,7 +20,7 @@ Dolly::Application::Application()
 
 	maxDisplayWidth = DisplayWidth(display, screenNumber);
 
-	maxDisplayHeigth = DisplayHeight(display, screenNumber);
+	maxDisplayHeight = DisplayHeight(display, screenNumber);
 
 	appWindow = XCreateSimpleWindow(display, GetRootWindow(),
 			0, 0, 300, 300, 4, GetBlackPixel(), GetWhitePixel());
@@ -38,9 +38,9 @@ int Dolly::Application::GetMaxWidthDisplay(int displayNum)
 	return maxDisplayWidth;
 }
 
-int Dolly::Application::GetMaxHeigthDisplay(int displayNum)
+int Dolly::Application::GetMaxHeightDisplay(int displayNum)
 {
-	return maxDisplayHeigth;
+	return maxDisplayHeight;
 }
 
 Display* Dolly::Application::GetPointerDisplay() const

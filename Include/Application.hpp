@@ -16,7 +16,7 @@ namespace Dolly
 
 		int maxDisplayWidth = 0;
 
-		int maxDisplayHeigth = 0;
+		int maxDisplayHeight = 0;
 
 		Window appWindow;
 
@@ -36,7 +36,7 @@ namespace Dolly
 
 		int GetMaxWidthDisplay(int displayNum);
 
-		int GetMaxHeigthDisplay(int displayNum);
+		int GetMaxHeightDisplay(int displayNum);
 
 		[[nodiscard]] unsigned long GetBlackPixel() const;
 
