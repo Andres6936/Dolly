@@ -7,12 +7,15 @@
 
 Dolly::Application::Application()
 {
-	Levin::LOGGER = std::make_unique<Levin::ColoredLogger>(std::wcout);
+	Levin::LOGGER = std::make_unique <Levin::ColoredLogger>(std::wcout);
 
+	// Pre-condition: The display has been initialized and connect to X server.
+	// @see Documentation of member variable display.
 	if (display == nullptr)
 	{
-		Levin::Error() << "Not is possible connect to X server." << Levin::endl;
-		// Terminate the program, is not possible continue with the display.
+		Levin::Error() << "Can't is possible connect to X server." << Levin::endl;
+		// Terminate the program, Can't continue without the display and a
+		// connection to X Server.
 		std::terminate();
 	}
 
@@ -26,10 +29,10 @@ Dolly::Application::Application()
 	displayWidthInMillimeters = DisplayWidthMM(display, screenNumber);
 	displayHeightInMillimeters = DisplayHeightMM(display, screenNumber);
 
-	appWindow = XCreateSimpleWindow(display, GetRootWindow(),
-			0, 0, 300, 300, 4, GetBlackPixel(), GetWhitePixel());
+	GetGeometryInformationAboutRootWindow();
 
-	XMapWindow(display, appWindow);
+	// Pre-condition: root windows has been initialized.
+	XMapWindow(display, root);
 }
 
 Dolly::Application::~Application()
@@ -80,4 +83,16 @@ int Dolly::Application::GetDisplayWidthInPixels() const
 int Dolly::Application::GetDisplayHeightInPixels() const
 {
 	return displayHeightInPixels;
+}
+
+void Dolly::Application::GetGeometryInformationAboutRootWindow()
+{
+	if (not XGetGeometry(display, GetRootWindow(), &root,
+			&x, &y, &width, &height, &borderWidth, &depth))
+	{
+		Levin::Error() << "Can't get root window geometry." << Levin::endl;
+		// Terminate the program, no is possible continue
+		// without the information of root window.
+		std::terminate();
+	}
 }

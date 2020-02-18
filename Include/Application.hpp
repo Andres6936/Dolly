@@ -13,17 +13,49 @@ namespace Dolly
 	private:
 
 		/**
+		 * Coordinate in x of root window.
+		 */
+		int x = 0;
+
+		/**
+		 * Coordinate in y of root window.
+		 */
+		int y = 0;
+
+		unsigned int depth = 0;
+
+		/**
+		 * Width of root window in pixels.
+		 *
+		 * @note Is same that width in pixels of display.
+		 */
+		unsigned int width = 0;
+
+		/**
+		 * Height of root window in pixels.
+		 *
+		 * @note Is same that height in pixels of display.
+		 */
+		unsigned int height = 0;
+
+		unsigned int borderWidth = 0;
+
+		/**
 		 * Id of screen used for X server.
 		 */
 		int screenNumber = 0;
 
 		/**
 		 * Width of display in pixels.
+		 *
+		 * @note Is same that width.
 		 */
 		int displayWidthInPixels = 0;
 
 		/**
 		 * Height of display in pixels.
+		 *
+		 * @note Is same that height.
 		 */
 		int displayHeightInPixels = 0;
 
@@ -38,15 +70,22 @@ namespace Dolly
 		int displayHeightInMillimeters = 0;
 
 		/**
-		 * Initial window that is show when a
-		 * instance of this class is created.
+		 * Root window of display.
 		 */
-		Window appWindow;
+		Window root;
 
 		/**
 		 * Structure needed for connect to X Server.
+		 *
+		 * @post The display will be initialized and
+		 *  connect to X server.
 		 */
 		Display* display = XOpenDisplay(nullptr);
+
+		/**
+		 * @post The root window will be initialized.
+		 */
+		void GetGeometryInformationAboutRootWindow();
 
 	public:
 
