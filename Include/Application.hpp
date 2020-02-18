@@ -12,14 +12,40 @@ namespace Dolly
 
 	private:
 
+		/**
+		 * Id of screen used for X server.
+		 */
 		int screenNumber = 0;
 
-		int maxDisplayWidth = 0;
+		/**
+		 * Width of display in pixels.
+		 */
+		int displayWidthInPixels = 0;
 
-		int maxDisplayHeight = 0;
+		/**
+		 * Height of display in pixels.
+		 */
+		int displayHeightInPixels = 0;
 
+		/**
+		 * Width of display in millimeters.
+		 */
+		int displayWidthInMillimeters = 0;
+
+		/**
+		 * Height of display in millimeters.
+		 */
+		int displayHeightInMillimeters = 0;
+
+		/**
+		 * Initial window that is show when a
+		 * instance of this class is created.
+		 */
 		Window appWindow;
 
+		/**
+		 * Structure needed for connect to X Server.
+		 */
 		Display* display = XOpenDisplay(nullptr);
 
 	public:
@@ -34,9 +60,13 @@ namespace Dolly
 
 		// Getters
 
-		int GetMaxWidthDisplay(int displayNum);
+		[[nodiscard]] int GetDisplayWidthInPixels() const;
 
-		int GetMaxHeightDisplay(int displayNum);
+		[[nodiscard]] int GetDisplayHeightInPixels() const;
+
+		[[nodiscard]] int GetDisplayWidthInMillimeters() const;
+
+		[[nodiscard]] int GetDisplayHeightInMillimeters() const;
 
 		[[nodiscard]] unsigned long GetBlackPixel() const;
 

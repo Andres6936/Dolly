@@ -18,9 +18,13 @@ Dolly::Application::Application()
 
 	screenNumber = DefaultScreen(display);
 
-	maxDisplayWidth = DisplayWidth(display, screenNumber);
+	// Get dimensions of display in pixels.
+	displayWidthInPixels = DisplayWidth(display, screenNumber);
+	displayHeightInPixels = DisplayHeight(display, screenNumber);
 
-	maxDisplayHeight = DisplayHeight(display, screenNumber);
+	// Get dimensions of display in millimeters.
+	displayWidthInMillimeters = DisplayWidthMM(display, screenNumber);
+	displayHeightInMillimeters = DisplayHeightMM(display, screenNumber);
 
 	appWindow = XCreateSimpleWindow(display, GetRootWindow(),
 			0, 0, 300, 300, 4, GetBlackPixel(), GetWhitePixel());
@@ -33,14 +37,14 @@ Dolly::Application::~Application()
 	XCloseDisplay(display);
 }
 
-int Dolly::Application::GetMaxWidthDisplay(int displayNum)
+int Dolly::Application::GetWidthDisplayInPixels(int displayNum) const
 {
-	return maxDisplayWidth;
+	return displayWidthInPixels;
 }
 
-int Dolly::Application::GetMaxHeightDisplay(int displayNum)
+int Dolly::Application::GetHeightDisplayInPixels(int displayNum) const
 {
-	return maxDisplayHeight;
+	return displayHeightInPixels;
 }
 
 Display* Dolly::Application::GetPointerDisplay() const
@@ -66,4 +70,24 @@ unsigned long Dolly::Application::GetWhitePixel() const
 void Dolly::Application::Show()
 {
 	XFlush(display);
+}
+
+int Dolly::Application::GetDisplayWidthInMillimeters() const
+{
+	return displayWidthInMillimeters;
+}
+
+int Dolly::Application::GetDisplayHeightInMillimeters() const
+{
+	return displayHeightInMillimeters;
+}
+
+int Dolly::Application::GetDisplayWidthInPixels() const
+{
+	return displayWidthInPixels;
+}
+
+int Dolly::Application::GetDisplayHeightInPixels() const
+{
+	return displayHeightInPixels;
 }
