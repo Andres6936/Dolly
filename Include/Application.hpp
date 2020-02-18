@@ -71,6 +71,10 @@ namespace Dolly
 
 		/**
 		 * Root window of display.
+		 *
+		 * @note Is needed called the method
+		 *  GetGeometryInformationAboutRootWindow for
+		 *  initialized correctly this variable.
 		 */
 		Window root;
 
