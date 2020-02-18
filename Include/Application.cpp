@@ -103,6 +103,10 @@ void Dolly::Application::GetGeometryInformationAboutRootWindow()
 
 int Dolly::Application::MainLoop()
 {
+	// MainLoop is the first method called.
+	// Is needed show the widgets to user.
+	Show();
+
 	XEvent event;
 
 	while (true)

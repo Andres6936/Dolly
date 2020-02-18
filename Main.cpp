@@ -1,13 +1,11 @@
-#include <iostream>
 #include "Application.hpp"
+#include "Frame.hpp"
 
 using namespace Dolly;
 
 int main()
 {
 	Application app;
-	app.Show();
-	std::cin.get();
-	//app.MainLoop();
-	return 0;
+	Frame frame(app);
+	app.MainLoop();
 }

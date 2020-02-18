@@ -5,24 +5,23 @@
 #include <X11/Xutil.h>
 #include <X11/Xos.h>
 
+#include "Application.hpp"
+#include "Core.hpp"
+
 namespace Dolly
 {
-	class Frame
+	class Frame : public Core
 	{
 
 	private:
 
-		inline static int WIDTH_DEFAULT = 300;
-
-		inline static int HEIGTH_DEFAULT = 300;
-
 		Window window;
+
+		Application& parent;
 
 	public:
 
-		Frame();
-
-		Frame(short width, short heigth);
+		explicit Frame(Application& _parent);
 
 	};
 }

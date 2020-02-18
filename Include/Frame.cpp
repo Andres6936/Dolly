@@ -1,9 +1,9 @@
 #include "Frame.hpp"
 
-Dolly::Frame::Frame()
+Dolly::Frame::Frame(Application& _parent) : parent(_parent)
 {
-}
+	window = XCreateSimpleWindow(parent.GetPointerDisplay(), parent.GetRootWindow(),
+			0, 0, width, height, 4, parent.GetBlackPixel(), parent.GetWhitePixel());
 
-Dolly::Frame::Frame(short width, short heigth)
-{
+	XMapWindow(parent.GetPointerDisplay(), window);
 }

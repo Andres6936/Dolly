@@ -5,40 +5,14 @@
 #include <X11/Xutil.h>
 #include <X11/Xos.h>
 
+#include "Core.hpp"
+
 namespace Dolly
 {
-	class Application
+	class Application : public Core
 	{
 
 	private:
-
-		/**
-		 * Coordinate in x of root window.
-		 */
-		int x = 0;
-
-		/**
-		 * Coordinate in y of root window.
-		 */
-		int y = 0;
-
-		unsigned int depth = 0;
-
-		/**
-		 * Width of root window in pixels.
-		 *
-		 * @note Is same that width in pixels of display.
-		 */
-		unsigned int width = 0;
-
-		/**
-		 * Height of root window in pixels.
-		 *
-		 * @note Is same that height in pixels of display.
-		 */
-		unsigned int height = 0;
-
-		unsigned int borderWidth = 0;
 
 		/**
 		 * Id of screen used for X server.
@@ -91,8 +65,6 @@ namespace Dolly
 		 */
 		void GetGeometryInformationAboutRootWindow();
 
-		[[nodiscard]] Window GetRootWindow() const;
-
 	public:
 
 		Application();
@@ -118,6 +90,8 @@ namespace Dolly
 		[[nodiscard]] unsigned long GetBlackPixel() const;
 
 		[[nodiscard]] unsigned long GetWhitePixel() const;
+
+		[[nodiscard]] Window GetRootWindow() const;
 
 		[[nodiscard]] Display* GetPointerDisplay() const;
 
