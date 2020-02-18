@@ -111,14 +111,19 @@ int Dolly::Application::MainLoop()
 		switch (event.type)
 		{
 		case Expose:
+			Levin::Info() << "Expose Event." << Levin::endl;
 			break;
 		case ConfigureNotify:
+			Levin::Info() << "Configure Event." << Levin::endl;
 			break;
 		case ButtonPress:
+			Levin::Info() << "Button Event." << Levin::endl;
 			break;
 		case KeyPress:
+			Levin::Info() << "Key Event." << Levin::endl;
 			break;
 		default:
+			Levin::Info() << "Default Event." << Levin::endl;
 			break;
 		}
 	}

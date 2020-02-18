@@ -10,5 +10,8 @@ Dolly::Frame::Frame()
 
 int Dolly::Frame::Show()
 {
+	XSelectInput(app.GetPointerDisplay(), window,
+			StructureNotifyMask | ExposureMask | ButtonPressMask | KeyPressMask);
+
 	return app.MainLoop();
 }
