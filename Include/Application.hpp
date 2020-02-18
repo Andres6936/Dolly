@@ -91,6 +91,8 @@ namespace Dolly
 		 */
 		void GetGeometryInformationAboutRootWindow();
 
+		[[nodiscard]] Window GetRootWindow() const;
+
 	public:
 
 		Application();
@@ -100,6 +102,8 @@ namespace Dolly
 		// Methods
 
 		void Show();
+
+		int MainLoop();
 
 		// Getters
 
@@ -114,8 +118,6 @@ namespace Dolly
 		[[nodiscard]] unsigned long GetBlackPixel() const;
 
 		[[nodiscard]] unsigned long GetWhitePixel() const;
-
-		[[nodiscard]] Window GetRootWindow() const;
 
 		[[nodiscard]] Display* GetPointerDisplay() const;
 

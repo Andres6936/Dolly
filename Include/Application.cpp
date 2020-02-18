@@ -100,3 +100,29 @@ void Dolly::Application::GetGeometryInformationAboutRootWindow()
 		std::terminate();
 	}
 }
+
+int Dolly::Application::MainLoop()
+{
+	XEvent event;
+
+	while (true)
+	{
+		XNextEvent(display, &event);
+
+		switch (event.type)
+		{
+		case Expose:
+			break;
+		case ConfigureNotify:
+			break;
+		case ButtonPress:
+			break;
+		case KeyPress:
+			break;
+		default:
+			break;
+		}
+	}
+
+	return 0;
+}
