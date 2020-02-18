@@ -60,11 +60,6 @@ unsigned long Dolly::Application::GetWhitePixel() const
 	return WhitePixel(display, screenNumber);
 }
 
-void Dolly::Application::Show()
-{
-	XFlush(display);
-}
-
 int Dolly::Application::GetDisplayWidthInMillimeters() const
 {
 	return displayWidthInMillimeters;
@@ -105,7 +100,7 @@ int Dolly::Application::MainLoop()
 {
 	// MainLoop is the first method called.
 	// Is needed show the widgets to user.
-	Show();
+	XFlush(display);
 
 	XEvent event;
 

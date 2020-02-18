@@ -15,13 +15,22 @@ namespace Dolly
 
 	private:
 
+		/**
+		 * Frame window.
+		 */
 		Window window;
 
-		Application& parent;
+		/**
+		 * The only instance of app in
+		 * all execution of program.
+		 */
+		Application app = Application();
 
 	public:
 
-		explicit Frame(Application& _parent);
+		explicit Frame();
+
+		int Show();
 
 	};
 }

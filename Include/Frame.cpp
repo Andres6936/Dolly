@@ -1,9 +1,14 @@
 #include "Frame.hpp"
 
-Dolly::Frame::Frame(Application& _parent) : parent(_parent)
+Dolly::Frame::Frame()
 {
-	window = XCreateSimpleWindow(parent.GetPointerDisplay(), parent.GetRootWindow(),
-			0, 0, width, height, 4, parent.GetBlackPixel(), parent.GetWhitePixel());
+	window = XCreateSimpleWindow(app.GetPointerDisplay(), app.GetRootWindow(),
+			0, 0, width, height, 4, app.GetBlackPixel(), app.GetWhitePixel());
 
-	XMapWindow(parent.GetPointerDisplay(), window);
+	XMapWindow(app.GetPointerDisplay(), window);
+}
+
+int Dolly::Frame::Show()
+{
+	return app.MainLoop();
 }

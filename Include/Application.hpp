@@ -73,8 +73,6 @@ namespace Dolly
 
 		// Methods
 
-		void Show();
-
 		int MainLoop();
 
 		// Getters
