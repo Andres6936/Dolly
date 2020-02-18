@@ -87,6 +87,10 @@ int Dolly::Application::GetDisplayHeightInPixels() const
 
 void Dolly::Application::GetGeometryInformationAboutRootWindow()
 {
+	// Note that the root argument of XGetGeometry()
+	// returns the root window at the top of the
+	// hierarchy of the window being queried
+
 	if (not XGetGeometry(display, GetRootWindow(), &root,
 			&x, &y, &width, &height, &borderWidth, &depth))
 	{
