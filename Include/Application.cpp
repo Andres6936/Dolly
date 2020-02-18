@@ -37,16 +37,6 @@ Dolly::Application::~Application()
 	XCloseDisplay(display);
 }
 
-int Dolly::Application::GetWidthDisplayInPixels(int displayNum) const
-{
-	return displayWidthInPixels;
-}
-
-int Dolly::Application::GetHeightDisplayInPixels(int displayNum) const
-{
-	return displayHeightInPixels;
-}
-
 Display* Dolly::Application::GetPointerDisplay() const
 {
 	return display;
