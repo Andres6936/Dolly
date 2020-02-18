@@ -12,6 +12,8 @@ Dolly::Application::Application()
 	if (display == nullptr)
 	{
 		Levin::Error() << "Not is possible open the Display." << Levin::endl;
+		// Termine the program, is not possible continue with the display.
+		std::terminate();
 	}
 
 	screenNumber = DefaultScreen(display);
