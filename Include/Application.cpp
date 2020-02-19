@@ -43,10 +43,6 @@ Dolly::Application::Application(int argc, char** argv)
 
 int Dolly::Application::MainLoop()
 {
-	// MainLoop is the first method called.
-	// Is needed show the widgets to user.
-	XFlush(app.GetPointerDisplay());
-
 	XEvent event;
 
 	bool running = true;
