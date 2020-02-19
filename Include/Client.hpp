@@ -26,24 +26,24 @@ namespace Dolly
 		 *
 		 * @note Is same that width.
 		 */
-		int displayWidthInPixels = 0;
+		int widthPixels = 0;
 
 		/**
 		 * Height of display in pixels.
 		 *
 		 * @note Is same that height.
 		 */
-		int displayHeightInPixels = 0;
+		int heightPixels = 0;
 
 		/**
 		 * Width of display in millimeters.
 		 */
-		int displayWidthInMillimeters = 0;
+		int widthMillimeters = 0;
 
 		/**
 		 * Height of display in millimeters.
 		 */
-		int displayHeightInMillimeters = 0;
+		int heightMillimeters = 0;
 
 		/**
 		 * Major version of X Window Protocol

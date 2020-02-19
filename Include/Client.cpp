@@ -22,12 +22,12 @@ Dolly::Client::Client()
 	screenNumber = DefaultScreen(display);
 
 	// Get dimensions of display in pixels.
-	displayWidthInPixels = DisplayWidth(display, screenNumber);
-	displayHeightInPixels = DisplayHeight(display, screenNumber);
+	widthPixels = DisplayWidth(display, screenNumber);
+	heightPixels = DisplayHeight(display, screenNumber);
 
 	// Get dimensions of display in millimeters.
-	displayWidthInMillimeters = DisplayWidthMM(display, screenNumber);
-	displayHeightInMillimeters = DisplayHeightMM(display, screenNumber);
+	widthMillimeters = DisplayWidthMM(display, screenNumber);
+	heightMillimeters = DisplayHeightMM(display, screenNumber);
 
 	GetGeometryInformationAboutDisplay();
 
@@ -71,22 +71,22 @@ unsigned long Dolly::Client::GetWhitePixel() const
 
 int Dolly::Client::GetDisplayWidthInMillimeters() const
 {
-	return displayWidthInMillimeters;
+	return widthMillimeters;
 }
 
 int Dolly::Client::GetDisplayHeightInMillimeters() const
 {
-	return displayHeightInMillimeters;
+	return heightMillimeters;
 }
 
 int Dolly::Client::GetDisplayWidthInPixels() const
 {
-	return displayWidthInPixels;
+	return widthPixels;
 }
 
 int Dolly::Client::GetDisplayHeightInPixels() const
 {
-	return displayHeightInPixels;
+	return heightPixels;
 }
 
 void Dolly::Client::GetGeometryInformationAboutDisplay()
