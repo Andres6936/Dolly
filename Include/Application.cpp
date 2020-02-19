@@ -96,7 +96,7 @@ void Dolly::Application::GetGeometryInformationAboutRootWindow()
 	}
 }
 
-int Dolly::Application::MainLoop()
+int Dolly::Application::MainLoop(Atom& info)
 {
 	// MainLoop is the first method called.
 	// Is needed show the widgets to user.
@@ -104,7 +104,9 @@ int Dolly::Application::MainLoop()
 
 	XEvent event;
 
-	while (true)
+	bool running = true;
+
+	while (running)
 	{
 		// Gets the next event of any type on any window.
 		XNextEvent(display, &event);
@@ -123,6 +125,9 @@ int Dolly::Application::MainLoop()
 		case KeyPress:
 			Levin::Info() << "Key Event." << Levin::endl;
 			break;
+		case ClientMessage:
+			// If the client close the main window.
+			if (event.xclient.data.l[0] == info) running = false;
 		default:
 			Levin::Info() << "Default Event." << Levin::endl;
 			break;

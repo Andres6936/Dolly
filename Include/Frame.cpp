@@ -12,9 +12,12 @@ Dolly::Frame::Frame()
 	XSelectInput(app.GetPointerDisplay(), window,
 			StructureNotifyMask | ExposureMask | ButtonPressMask | KeyPressMask);
 	XMapWindow(app.GetPointerDisplay(), window);
+
+	wmDeleteMessage = XInternAtom(app.GetPointerDisplay(), "WM_DELETE_WINDOW", false);
+	XSetWMProtocols(app.GetPointerDisplay(), window, &wmDeleteMessage, 1);
 }
 
 int Dolly::Frame::Show()
 {
-	return app.MainLoop();
+	return app.MainLoop(wmDeleteMessage);
 }

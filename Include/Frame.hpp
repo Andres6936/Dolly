@@ -16,6 +16,11 @@ namespace Dolly
 	private:
 
 		/**
+		 * Needed for capture the window close event.
+		 */
+		Atom wmDeleteMessage;
+
+		/**
 		 * Frame window.
 		 */
 		Window window;

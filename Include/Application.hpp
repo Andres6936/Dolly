@@ -73,7 +73,7 @@ namespace Dolly
 
 		// Methods
 
-		int MainLoop();
+		int MainLoop(Atom& info);
 
 		// Getters
 
