@@ -2,7 +2,7 @@
 
 Dolly::Frame::Frame()
 {
-	window = XCreateSimpleWindow(app.GetPointerDisplay(), app.GetRootWindow(),
+	window = XCreateSimpleWindow(app.GetPointerDisplay(), app.GetWindowDisplay(),
 			0, 0, width, height, 4, app.GetBlackPixel(), app.GetWhitePixel());
 
 	// Is needed that the events will be selected before the window will be mapped.

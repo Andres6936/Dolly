@@ -29,10 +29,10 @@ Dolly::Application::Application()
 	displayWidthInMillimeters = DisplayWidthMM(display, screenNumber);
 	displayHeightInMillimeters = DisplayHeightMM(display, screenNumber);
 
-	GetGeometryInformationAboutRootWindow();
+	GetGeometryInformationAboutDisplay();
 
-	// Pre-condition: root windows has been initialized.
-	XMapWindow(display, root);
+	// Pre-condition: infoDisplay windows has been initialized.
+	XMapWindow(display, infoDisplay);
 }
 
 Dolly::Application::~Application()
@@ -45,7 +45,7 @@ Display* Dolly::Application::GetPointerDisplay() const
 	return display;
 }
 
-Window Dolly::Application::GetRootWindow() const
+Window Dolly::Application::GetWindowDisplay() const
 {
 	return XRootWindow(display, screenNumber);
 }
@@ -80,18 +80,18 @@ int Dolly::Application::GetDisplayHeightInPixels() const
 	return displayHeightInPixels;
 }
 
-void Dolly::Application::GetGeometryInformationAboutRootWindow()
+void Dolly::Application::GetGeometryInformationAboutDisplay()
 {
-	// Note that the root argument of XGetGeometry()
-	// returns the root window at the top of the
+	// Note that the infoDisplay argument of XGetGeometry()
+	// returns the infoDisplay window at the top of the
 	// hierarchy of the window being queried
 
-	if (not XGetGeometry(display, GetRootWindow(), &root,
+	if (not XGetGeometry(display, GetWindowDisplay(), &infoDisplay,
 			&x, &y, &width, &height, &borderWidth, &depth))
 	{
-		Levin::Error() << "Can't get root window geometry." << Levin::endl;
+		Levin::Error() << "Can't get display window geometry." << Levin::endl;
 		// Terminate the program, no is possible continue
-		// without the information of root window.
+		// without the information of infoDisplay window.
 		std::terminate();
 	}
 }

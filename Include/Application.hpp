@@ -47,10 +47,10 @@ namespace Dolly
 		 * Root window of display.
 		 *
 		 * @note Is needed called the method
-		 *  GetGeometryInformationAboutRootWindow for
+		 *  GetGeometryInformationAboutDisplay for
 		 *  initialized correctly this variable.
 		 */
-		Window root;
+		Window infoDisplay;
 
 		/**
 		 * Structure needed for connect to X Server.
@@ -61,9 +61,9 @@ namespace Dolly
 		Display* display = XOpenDisplay(nullptr);
 
 		/**
-		 * @post The root window will be initialized.
+		 * @post The infoDisplay window will be initialized.
 		 */
-		void GetGeometryInformationAboutRootWindow();
+		void GetGeometryInformationAboutDisplay();
 
 	public:
 
@@ -89,7 +89,7 @@ namespace Dolly
 
 		[[nodiscard]] unsigned long GetWhitePixel() const;
 
-		[[nodiscard]] Window GetRootWindow() const;
+		[[nodiscard]] Window GetWindowDisplay() const;
 
 		[[nodiscard]] Display* GetPointerDisplay() const;
 
