@@ -5,6 +5,8 @@
 #include <X11/Xutil.h>
 #include <X11/Xos.h>
 
+#include <string_view>
+
 #include "Core.hpp"
 
 namespace Dolly
@@ -44,6 +46,24 @@ namespace Dolly
 		int displayHeightInMillimeters = 0;
 
 		/**
+		 * Major version of X Window Protocol
+		 * used on the connection.
+		 */
+		int majorVersion = 0;
+
+		/**
+		 * Minor revision of X Window Protocol
+		 * used on the connection.
+		 */
+		int minorRevision = 0;
+
+		/**
+		 * Vendor release number of workstation
+		 * server used on the connection.
+		 */
+		int release = 0;
+
+		/**
 		 * Information of characteristics display.
 		 *
 		 * @note Is needed called the method
@@ -59,6 +79,13 @@ namespace Dolly
 		 *  connect to X server.
 		 */
 		Display* display = XOpenDisplay(nullptr);
+
+		/**
+		 * Display name of specified connection.
+		 *
+		 * @note Information useful for error reporting.
+		 */
+		std::string_view displayName;
 
 		/**
 		 * @post The infoDisplay window will be initialized.

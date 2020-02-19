@@ -31,6 +31,13 @@ Dolly::Client::Client()
 
 	GetGeometryInformationAboutDisplay();
 
+	displayName = DisplayString(display);
+
+	majorVersion = ProtocolVersion(display);
+	minorRevision = ProtocolRevision(display);
+
+	release = VendorRelease(display);
+
 	// Pre-condition: infoDisplay windows has been initialized.
 	XMapWindow(display, infoDisplay);
 }
