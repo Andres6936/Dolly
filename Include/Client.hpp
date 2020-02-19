@@ -99,7 +99,7 @@ namespace Dolly
 
 	public:
 
-		Client();
+		Client() noexcept;
 
 		virtual ~Client();
 

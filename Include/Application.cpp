@@ -88,3 +88,8 @@ Dolly::Application::~Application()
 	XFreeGC(app.GetPointerDisplay(), graphicContext);
 	XDestroyWindow(app.GetPointerDisplay(), window);
 }
+
+const Dolly::Client& Dolly::Application::GetClient()
+{
+	return app;
+}

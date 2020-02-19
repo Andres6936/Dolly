@@ -40,7 +40,7 @@ namespace Dolly
 		 * The only instance of app in
 		 * all execution of program.
 		 */
-		Client app = Client();
+		static inline Client app = Client();
 
 	public:
 
@@ -51,6 +51,14 @@ namespace Dolly
 		// Methods
 
 		int MainLoop();
+
+		// Static Methods
+
+		/**
+		 * @return Get the only instance with
+		 * information of X Server.
+		 */
+		static const Client& GetClient();
 	};
 }
 

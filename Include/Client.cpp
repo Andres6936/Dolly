@@ -5,7 +5,7 @@
 #include <Levin/Log.h>
 #include <Levin/Logger.h>
 
-Dolly::Client::Client()
+Dolly::Client::Client() noexcept
 {
 	Levin::LOGGER = std::make_unique <Levin::ColoredLogger>(std::wcout);
 
