@@ -106,6 +106,7 @@ int Dolly::Application::MainLoop()
 
 	while (true)
 	{
+		// Gets the next event of any type on any window.
 		XNextEvent(display, &event);
 
 		switch (event.type)
