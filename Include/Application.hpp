@@ -5,6 +5,7 @@
 #include <X11/Xutil.h>
 #include <X11/Xos.h>
 
+#include "Client.hpp"
 #include "Core.hpp"
 
 namespace Dolly
@@ -15,85 +16,30 @@ namespace Dolly
 	private:
 
 		/**
-		 * Id of screen used for X server.
+		 * Needed for capture the window close event.
 		 */
-		int screenNumber = 0;
+		Atom wmDeleteMessage;
 
 		/**
-		 * Width of display in pixels.
-		 *
-		 * @note Is same that width.
+		 * Application window.
 		 */
-		int displayWidthInPixels = 0;
+		Window window;
 
 		/**
-		 * Height of display in pixels.
-		 *
-		 * @note Is same that height.
+		 * The only instance of app in
+		 * all execution of program.
 		 */
-		int displayHeightInPixels = 0;
-
-		/**
-		 * Width of display in millimeters.
-		 */
-		int displayWidthInMillimeters = 0;
-
-		/**
-		 * Height of display in millimeters.
-		 */
-		int displayHeightInMillimeters = 0;
-
-		/**
-		 * Information of characteristics display.
-		 *
-		 * @note Is needed called the method
-		 *  GetGeometryInformationAboutDisplay for
-		 *  initialized correctly this variable.
-		 */
-		Window infoDisplay;
-
-		/**
-		 * Structure needed for connect to X Server.
-		 *
-		 * @post The display will be initialized and
-		 *  connect to X server.
-		 */
-		Display* display = XOpenDisplay(nullptr);
-
-		/**
-		 * @post The infoDisplay window will be initialized.
-		 */
-		void GetGeometryInformationAboutDisplay();
+		Client app = Client();
 
 	public:
 
-		Application();
-
-		virtual ~Application();
+		explicit Application();
 
 		// Methods
 
-		int MainLoop(Atom& info);
-
-		// Getters
-
-		[[nodiscard]] int GetDisplayWidthInPixels() const;
-
-		[[nodiscard]] int GetDisplayHeightInPixels() const;
-
-		[[nodiscard]] int GetDisplayWidthInMillimeters() const;
-
-		[[nodiscard]] int GetDisplayHeightInMillimeters() const;
-
-		[[nodiscard]] unsigned long GetBlackPixel() const;
-
-		[[nodiscard]] unsigned long GetWhitePixel() const;
-
-		[[nodiscard]] Window GetWindowDisplay() const;
-
-		[[nodiscard]] Display* GetPointerDisplay() const;
-
+		int MainLoop();
 	};
 }
+
 
 #endif //DOLLY_APPLICATION_HPP

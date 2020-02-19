@@ -1,9 +1,9 @@
-#include "Frame.hpp"
+#include "Application.hpp"
 
 using namespace Dolly;
 
 int main()
 {
-	Frame frame;
-	frame.Show();
+	Application app;
+	app.MainLoop();
 }
