@@ -60,6 +60,11 @@ int Dolly::Application::MainLoop()
 		{
 		case Expose:
 			Levin::Info() << "Expose Event." << Levin::endl;
+			if (event.xexpose.count == 0)
+			{
+				XDrawImageString(event.xexpose.display, event.xexpose.window, graphicContext,
+						50, 50, "Hello", 5);
+			}
 			break;
 		case ConfigureNotify:
 			Levin::Info() << "Configure Event." << Levin::endl;
@@ -80,4 +85,9 @@ int Dolly::Application::MainLoop()
 	}
 
 	return 0;
+}
+
+Dolly::Application::~Application()
+{
+	XFreeGC(app.GetPointerDisplay(), graphicContext);
 }

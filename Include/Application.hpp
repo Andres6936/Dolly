@@ -46,6 +46,8 @@ namespace Dolly
 
 		Application(int argc, char** argv);
 
+		virtual ~Application();
+
 		// Methods
 
 		int MainLoop();
