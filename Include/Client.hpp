@@ -88,6 +88,11 @@ namespace Dolly
 		std::string_view displayName;
 
 		/**
+		 * Identity the vendor of the connected workstation.
+		 */
+		std::string_view vendorName;
+
+		/**
 		 * @post The infoDisplay window will be initialized.
 		 */
 		void GetGeometryInformationAboutDisplay();

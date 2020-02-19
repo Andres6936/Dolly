@@ -38,6 +38,8 @@ Dolly::Client::Client()
 
 	release = VendorRelease(display);
 
+	vendorName = ServerVendor(display);
+
 	// Pre-condition: infoDisplay windows has been initialized.
 	XMapWindow(display, infoDisplay);
 }
