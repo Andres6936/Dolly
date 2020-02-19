@@ -90,4 +90,5 @@ int Dolly::Application::MainLoop()
 Dolly::Application::~Application()
 {
 	XFreeGC(app.GetPointerDisplay(), graphicContext);
+	XDestroyWindow(app.GetPointerDisplay(), window);
 }
