@@ -16,6 +16,11 @@ namespace Dolly
 	private:
 
 		/**
+		 * The graphic context.
+		 */
+		GC graphicContext;
+
+		/**
 		 * Needed for capture the window close event.
 		 */
 		Atom wmDeleteMessage;
@@ -26,6 +31,12 @@ namespace Dolly
 		Window window;
 
 		/**
+		 * Use for inform other windows running about
+		 * of this window.
+		 */
+		XSizeHints sizeHint;
+
+		/**
 		 * The only instance of app in
 		 * all execution of program.
 		 */
@@ -33,7 +44,7 @@ namespace Dolly
 
 	public:
 
-		explicit Application();
+		Application(int argc, char** argv);
 
 		// Methods
 

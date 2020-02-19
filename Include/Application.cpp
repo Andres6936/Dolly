@@ -2,10 +2,21 @@
 
 #include <Levin/Log.h>
 
-Dolly::Application::Application()
+Dolly::Application::Application(int argc, char** argv)
 {
 	window = XCreateSimpleWindow(app.GetPointerDisplay(), app.GetWindowDisplay(),
 			0, 0, width, height, 4, app.GetBlackPixel(), app.GetWhitePixel());
+
+	// Fill the structure XSizeHints, that will be contented the information about
+	// of size and position of window.
+	sizeHint.x = 0;
+	sizeHint.y = 0;
+	sizeHint.width = (int)width;
+	sizeHint.height = (int)height;
+	sizeHint.flags = PPosition | PSize;
+
+	XSetStandardProperties(app.GetPointerDisplay(), window, "Dolly", "Dolly",
+			None, argv, argc, &sizeHint);
 
 	// Is needed that the events will be selected before the window will be mapped.
 	// This sequence is important, since otherwise the window will not receive the
