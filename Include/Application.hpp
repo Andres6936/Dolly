@@ -44,7 +44,7 @@ namespace Dolly
 		int displayHeightInMillimeters = 0;
 
 		/**
-		 * Root window of display.
+		 * Information of characteristics display.
 		 *
 		 * @note Is needed called the method
 		 *  GetGeometryInformationAboutDisplay for
