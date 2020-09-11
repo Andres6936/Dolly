@@ -39,6 +39,12 @@ Dolly::Application::Application(int argc, char** argv)
 	XSetWMProtocols(app.GetPointerDisplay(), window, &wmDeleteMessage, 1);
 }
 
+Dolly::Application::~Application()
+{
+	XFreeGC(app.GetPointerDisplay(), graphicContext);
+	XDestroyWindow(app.GetPointerDisplay(), window);
+}
+
 Dolly::Point2D<> Dolly::Application::GetCenteredPosition() const noexcept
 {
 	const std::int32_t x = static_cast<int>(app.GetDisplayWidthInPixels() - width) / 2;
@@ -107,12 +113,6 @@ void Dolly::Application::ResizeAndCenter(const std::uint32_t _width, const std::
 	const auto[x, y] = GetCenteredPosition();
 
 	XMoveResizeWindow(app.GetPointerDisplay(), window, x, y, width, height);
-}
-
-Dolly::Application::~Application()
-{
-	XFreeGC(app.GetPointerDisplay(), graphicContext);
-	XDestroyWindow(app.GetPointerDisplay(), window);
 }
 
 const Dolly::Client& Dolly::Application::GetClient()
