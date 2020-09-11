@@ -6,6 +6,7 @@ int main(int argc, char** argv)
 {
 	Application app(argc, argv);
 
+	app.SetTitleWindow("Application");
 	app.ResizeAndCenter(500, 500);
 	app.MainLoop();
 }

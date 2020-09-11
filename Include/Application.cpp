@@ -89,6 +89,14 @@ int Dolly::Application::MainLoop()
 	return 0;
 }
 
+void Dolly::Application::SetTitleWindow(std::string_view _title) const noexcept
+{
+	// The window name is a standard null-terminated text string
+	// Many windows managers display the current window name in a
+	// prominent place.
+	XStoreName(app.GetPointerDisplay(), window, _title.data());
+}
+
 void Dolly::Application::Resize(const std::uint32_t _width, const std::uint32_t _height) noexcept
 {
 	// Redefine the width and height of window
