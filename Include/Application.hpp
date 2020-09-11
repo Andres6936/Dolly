@@ -59,11 +59,6 @@ namespace Dolly
 
 		int MainLoop();
 
-		/**
-		 * @param _title Text string that describe the name of window.
-		 */
-		void SetTitleWindow(std::string_view _title) const noexcept;
-
 		void Resize(const std::uint32_t _width, const std::uint32_t _height) noexcept;
 
 		void ResizeAndCenter(const std::uint32_t _width, const std::uint32_t _height) noexcept;
@@ -75,6 +70,13 @@ namespace Dolly
 		 * information of X Server.
 		 */
 		static const Client& GetClient();
+
+		// Setters
+
+		/**
+		 * @param _title Text string that describe the name of window.
+		 */
+		void SetTitleWindow(std::string_view _title) const noexcept;
 	};
 }
 
