@@ -139,6 +139,11 @@ void Dolly::Application::SetMinSize(const std::uint32_t _width, const std::uint3
 {
 	sizeHint.min_width = _width;
 	sizeHint.min_height = _height;
+
+	// The bitmask specifying which other fields contain valid information.
+	// For this case, PMinSize is a valid information
+	// For avoid deleted the other valid information, needed overwrite the
+	// value of flags
 	sizeHint.flags = sizeHint.flags | PMinSize;
 
 	XSetNormalHints(app.GetPointerDisplay(), window, &sizeHint);
