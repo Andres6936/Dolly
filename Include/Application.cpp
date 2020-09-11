@@ -83,6 +83,15 @@ int Dolly::Application::MainLoop()
 	return 0;
 }
 
+void Dolly::Application::Resize(const std::uint32_t _width, const std::uint32_t _height) noexcept
+{
+	// Redefine the width and height of window
+	this->width = _width;
+	this->height = _height;
+
+	XResizeWindow(app.GetPointerDisplay(), window, width, height);
+}
+
 Dolly::Application::~Application()
 {
 	XFreeGC(app.GetPointerDisplay(), graphicContext);

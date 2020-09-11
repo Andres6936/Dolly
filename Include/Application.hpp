@@ -8,6 +8,8 @@
 #include "Client.hpp"
 #include "Core.hpp"
 
+#include <cstdint>
+
 namespace Dolly
 {
 	class Application : public Core
@@ -51,6 +53,8 @@ namespace Dolly
 		// Methods
 
 		int MainLoop();
+
+		void Resize(const std::uint32_t _width, const std::uint32_t _height) noexcept;
 
 		// Static Methods
 
