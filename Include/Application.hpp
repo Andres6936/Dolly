@@ -9,6 +9,7 @@
 #include "Core.hpp"
 
 #include <cstdint>
+#include <Geometry/Point2D.hpp>
 
 namespace Dolly
 {
@@ -44,6 +45,8 @@ namespace Dolly
 		 */
 		static inline Client app = Client();
 
+		Point2D<> GetCenteredPosition() const noexcept;
+
 	public:
 
 		Application(int argc, char** argv);
@@ -55,6 +58,8 @@ namespace Dolly
 		int MainLoop();
 
 		void Resize(const std::uint32_t _width, const std::uint32_t _height) noexcept;
+
+		void ResizeAndCenter(const std::uint32_t _width, const std::uint32_t _height) noexcept;
 
 		// Static Methods
 

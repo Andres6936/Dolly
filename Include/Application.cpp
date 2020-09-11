@@ -4,10 +4,8 @@
 
 Dolly::Application::Application(int argc, char** argv)
 {
-	// Represented the centered position in x.
-	int _x = static_cast<int>(app.GetDisplayWidthInPixels() - width) / 2;
-	// Represented the centered position in y.
-	int _y = static_cast<int>(app.GetDisplayHeightInPixels() - height) / 2;
+	// Represented the centered position of root window.
+	const auto[_x, _y] = GetCenteredPosition();
 
 	window = XCreateSimpleWindow(app.GetPointerDisplay(), app.GetWindowDisplay(),
 			_x, _y, width, height, 4, app.GetBlackPixel(), app.GetWhitePixel());
@@ -39,6 +37,14 @@ Dolly::Application::Application(int argc, char** argv)
 
 	wmDeleteMessage = XInternAtom(app.GetPointerDisplay(), "WM_DELETE_WINDOW", false);
 	XSetWMProtocols(app.GetPointerDisplay(), window, &wmDeleteMessage, 1);
+}
+
+Dolly::Point2D<> Dolly::Application::GetCenteredPosition() const noexcept
+{
+	const std::int32_t x = static_cast<int>(app.GetDisplayWidthInPixels() - width) / 2;
+	const std::int32_t y = static_cast<int>(app.GetDisplayHeightInPixels() - height) / 2;
+
+	return { x, y };
 }
 
 int Dolly::Application::MainLoop()
@@ -90,6 +96,17 @@ void Dolly::Application::Resize(const std::uint32_t _width, const std::uint32_t 
 	this->height = _height;
 
 	XResizeWindow(app.GetPointerDisplay(), window, width, height);
+}
+
+void Dolly::Application::ResizeAndCenter(const std::uint32_t _width, const std::uint32_t _height) noexcept
+{
+	this->width = _width;
+	this->height = _height;
+
+	// Get the centered position of root window
+	const auto[x, y] = GetCenteredPosition();
+
+	XMoveResizeWindow(app.GetPointerDisplay(), window, x, y, width, height);
 }
 
 Dolly::Application::~Application()
