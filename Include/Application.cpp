@@ -35,6 +35,12 @@ Dolly::Application::Application(int argc, char** argv)
 	// that may already be showing.
 	XMapRaised(app.GetPointerDisplay(), window);
 
+	// Clients, usually those with multiple top-level windows, whose server connection
+	// must survive the deletion of some of their top-level windows, should include the
+	// atom WM_DELETE_WINDOW in the WM_PROTOCOLS property on each such window.
+
+	// They will receive a ClientMessage event as described above whose data[0] field is
+	// WM_DELETE_WINDOW.
 	wmDeleteMessage = XInternAtom(app.GetPointerDisplay(), "WM_DELETE_WINDOW", false);
 	XSetWMProtocols(app.GetPointerDisplay(), window, &wmDeleteMessage, 1);
 }
