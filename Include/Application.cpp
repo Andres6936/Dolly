@@ -127,6 +127,11 @@ void Dolly::Application::SetMinSize(const Dolly::Size& size) noexcept
 	SetMinSize(size.w, size.h);
 }
 
+void Dolly::Application::SetMaxSize(const Dolly::Size& size) noexcept
+{
+	SetMaxSize(size.w, size.h);
+}
+
 void Dolly::Application::SetTitleWindow(std::string_view _title) const noexcept
 {
 	// The window name is a standard null-terminated text string
@@ -145,6 +150,20 @@ void Dolly::Application::SetMinSize(const std::uint32_t _width, const std::uint3
 	// For avoid deleted the other valid information, needed overwrite the
 	// value of flags
 	sizeHint.flags = sizeHint.flags | PMinSize;
+
+	XSetNormalHints(app.GetPointerDisplay(), window, &sizeHint);
+}
+
+void Dolly::Application::SetMaxSize(const std::uint32_t _width, const std::uint32_t _height) noexcept
+{
+	sizeHint.max_width = _width;
+	sizeHint.max_height = _height;
+
+	// The bitmask specifying which other fields contain valid information.
+	// For this case, PMaxSize is a valid information
+	// For avoid deleted the other valid information, needed overwrite the
+	// value of flags
+	sizeHint.flags = sizeHint.flags | PMaxSize;
 
 	XSetNormalHints(app.GetPointerDisplay(), window, &sizeHint);
 }

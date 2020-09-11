@@ -76,12 +76,16 @@ namespace Dolly
 
 		void SetMinSize(const Size& size) noexcept;
 
+		void SetMaxSize(const Size& size) noexcept;
+
 		/**
 		 * @param _title Text string that describe the name of window.
 		 */
 		void SetTitleWindow(std::string_view _title) const noexcept;
 
 		void SetMinSize(const std::uint32_t _width, const std::uint32_t _height) noexcept;
+
+		void SetMaxSize(const std::uint32_t _width, const std::uint32_t _height) noexcept;
 	};
 }
 

@@ -9,5 +9,6 @@ int main(int argc, char** argv)
 	app.SetTitleWindow("Application");
 	app.ResizeAndCenter(500, 500);
 	app.SetMinSize(300, 300);
+	app.SetMaxSize(700, 700);
 	app.MainLoop();
 }
