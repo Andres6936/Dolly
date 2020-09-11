@@ -12,8 +12,8 @@ Dolly::Application::Application(int argc, char** argv)
 
 	// Fill the structure XSizeHints, that will be contented the information about
 	// of size and position of window.
-	sizeHint.width = (int)width;
-	sizeHint.height = (int)height;
+	sizeHint.width = static_cast<int>(width);
+	sizeHint.height = static_cast<int>(height);
 	sizeHint.x = _x;
 	sizeHint.y = _y;
 	sizeHint.flags = PPosition | PSize;
