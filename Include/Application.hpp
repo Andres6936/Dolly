@@ -12,6 +12,7 @@
 #include <string_view>
 
 #include <Geometry/Point2D.hpp>
+#include <Geometry/Size.hpp>
 
 namespace Dolly
 {
@@ -73,10 +74,14 @@ namespace Dolly
 
 		// Setters
 
+		void SetMinSize(const Size& size) noexcept;
+
 		/**
 		 * @param _title Text string that describe the name of window.
 		 */
 		void SetTitleWindow(std::string_view _title) const noexcept;
+
+		void SetMinSize(const std::uint32_t _width, const std::uint32_t _height) noexcept;
 	};
 }
 

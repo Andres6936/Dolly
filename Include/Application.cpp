@@ -122,10 +122,24 @@ const Dolly::Client& Dolly::Application::GetClient()
 
 // Setters
 
+void Dolly::Application::SetMinSize(const Dolly::Size& size) noexcept
+{
+	SetMinSize(size.w, size.h);
+}
+
 void Dolly::Application::SetTitleWindow(std::string_view _title) const noexcept
 {
 	// The window name is a standard null-terminated text string
 	// Many windows managers display the current window name in a
 	// prominent place.
 	XStoreName(app.GetPointerDisplay(), window, _title.data());
+}
+
+void Dolly::Application::SetMinSize(const std::uint32_t _width, const std::uint32_t _height) noexcept
+{
+	sizeHint.min_width = _width;
+	sizeHint.min_height = _height;
+	sizeHint.flags = sizeHint.flags | PMinSize;
+
+	XSetNormalHints(app.GetPointerDisplay(), window, &sizeHint);
 }
