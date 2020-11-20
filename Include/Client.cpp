@@ -7,8 +7,6 @@
 
 Dolly::Client::Client() noexcept
 {
-	Levin::LOGGER = std::make_unique <Levin::ColoredLogger>(std::wcout);
-
 	// Pre-condition: The display has been initialized and connect to X server.
 	// @see Documentation of member variable display.
 	if (display == nullptr)
