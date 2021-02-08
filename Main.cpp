@@ -14,6 +14,6 @@ int main(int argc, char** argv)
 	while (app.IsRunning())
 	{
 		app.DrawString("Hello");
-		app.MainLoop();
+		app.HandleEvents();
 	}
 }

@@ -63,7 +63,7 @@ namespace Dolly
 
 		// Methods
 
-		int MainLoop();
+		int HandleEvents();
 
 		void DrawString(std::string_view _string) noexcept;
 

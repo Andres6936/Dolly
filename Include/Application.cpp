@@ -59,7 +59,7 @@ Dolly::Point2D<> Dolly::Application::GetCenteredPosition() const noexcept
 	return { x, y };
 }
 
-int Dolly::Application::MainLoop()
+int Dolly::Application::HandleEvents()
 {
 	XEvent event;
 
