@@ -12,6 +12,12 @@ INCLUDE_DIRECTORIES(Library)
 # Here find the library Levin for purpose of log
 LINK_DIRECTORIES(${CMAKE_SOURCE_DIR}/Library/Levin)
 
-ADD_EXECUTABLE(Dolly Main.cpp Include/Client.cpp Include/Client.hpp Include/Application.cpp Include/Application.hpp Include/Core.cpp Include/Core.hpp Include/Drawable.cpp Include/Drawable.hpp)
+ADD_EXECUTABLE(Dolly Main.cpp
+        Include/Graphics/Pixel.cpp
+        Include/Application.cpp
+        Include/Drawable.cpp
+        Include/Client.cpp
+        Include/Core.cpp
+        )
 TARGET_LINK_LIBRARIES(Dolly PRIVATE X11)
 TARGET_LINK_LIBRARIES(Dolly PRIVATE Levin)
