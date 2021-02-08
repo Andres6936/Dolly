@@ -44,6 +44,10 @@ Dolly::Application::Application(int argc, char** argv)
 	wmDeleteMessage = XInternAtom(app.GetPointerDisplay(), "WM_DELETE_WINDOW", false);
 	XSetWMProtocols(app.GetPointerDisplay(), window, &wmDeleteMessage, 1);
 
+	// X applications need to be careful in their use of colour, most colour
+	// workstations use a colour map, that is part of the display hardware and
+	// not part of the windows on the screen.
+	// All the windows on the screen must share the same hardware colour map.
 	colorMap = DefaultColormap(app.GetPointerDisplay(), DefaultScreen(app.GetPointerDisplay()));
 }
 
@@ -130,12 +134,17 @@ void Dolly::Application::ResizeAndCenter(const std::uint32_t _width,
 void Dolly::Application::DrawPixel(const std::uint32_t x, const std::uint32_t y,
 		const Pixel& color) noexcept
 {
+	// The pixel field is the colour map index for the colour and red, green,
+	// and blue are the three components of the colour, these values range from
+	// 0 to 65535, with 65535 giving the maximum amount of colour.
 	XColor xColor;
 
 	xColor.red = color.GetRed() * 257;
 	xColor.green = color.GetGreen() * 257;
 	xColor.blue = color.GetBlue() * 257;
 
+	// The XAllocColor() function allocates a read-only colorMap entry
+	// corresponding to the closest RGB value supported by the hardware.
 	XAllocColor(app.GetPointerDisplay(), colorMap, &xColor);
 
 	XSetForeground(app.GetPointerDisplay(), graphicContext, xColor.pixel);
