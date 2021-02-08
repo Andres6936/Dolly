@@ -8,6 +8,15 @@
 namespace Dolly
 {
 
+	/**
+	 * Each color is formed by mixing three basic colors: red, green and blue,
+	 * using the RGB (Red-Green-Blue) system to specify colors. When identifying
+	 * a particular color (e.g., deep white), it is defined as the sum of the
+	 * three basic colors and the proportion of the mixture of these colors.
+	 * This proportion is specified using one byte (range 0 to 255), so that
+	 * the most intense pure white (mixture of all colors) would be the color
+	 * (255,255,255), while black (absence of color) would be (0,0,0).
+	 */
 	class Pixel
 	{
 
