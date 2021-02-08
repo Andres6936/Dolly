@@ -104,12 +104,6 @@ void Dolly::Application::DrawString(std::string_view _string) noexcept
 			_string.data(), _string.size());
 }
 
-void Dolly::Application::DrawPixel(const std::uint32_t x, const std::uint32_t y) noexcept
-{
-	XSetForeground(app.GetPointerDisplay(), graphicContext, 42000);
-	XDrawPoint(app.GetPointerDisplay(), window, graphicContext, x, y);
-}
-
 void Dolly::Application::Resize(const std::uint32_t _width, const std::uint32_t _height) noexcept
 {
 	// Redefine the width and height of window
@@ -119,7 +113,8 @@ void Dolly::Application::Resize(const std::uint32_t _width, const std::uint32_t 
 	XResizeWindow(app.GetPointerDisplay(), window, width, height);
 }
 
-void Dolly::Application::ResizeAndCenter(const std::uint32_t _width, const std::uint32_t _height) noexcept
+void Dolly::Application::ResizeAndCenter(const std::uint32_t _width,
+		const std::uint32_t _height) noexcept
 {
 	this->width = _width;
 	this->height = _height;
@@ -128,6 +123,13 @@ void Dolly::Application::ResizeAndCenter(const std::uint32_t _width, const std::
 	const auto[x, y] = GetCenteredPosition();
 
 	XMoveResizeWindow(app.GetPointerDisplay(), window, x, y, width, height);
+}
+
+void Dolly::Application::DrawPixel(const std::uint32_t x, const std::uint32_t y,
+		const Pixel& color) noexcept
+{
+	XSetForeground(app.GetPointerDisplay(), graphicContext, 42000);
+	XDrawPoint(app.GetPointerDisplay(), window, graphicContext, x, y);
 }
 
 const Dolly::Client& Dolly::Application::GetClient()

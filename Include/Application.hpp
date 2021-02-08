@@ -13,6 +13,7 @@
 
 #include <Geometry/Point2D.hpp>
 #include <Geometry/Size.hpp>
+#include <Graphics/Pixel.hpp>
 
 namespace Dolly
 {
@@ -67,11 +68,11 @@ namespace Dolly
 
 		void DrawString(std::string_view _string) noexcept;
 
-		void DrawPixel(const std::uint32_t x, const std::uint32_t y) noexcept;
-
 		void Resize(const std::uint32_t _width, const std::uint32_t _height) noexcept;
 
 		void ResizeAndCenter(const std::uint32_t _width, const std::uint32_t _height) noexcept;
+
+		void DrawPixel(const std::uint32_t x, const std::uint32_t y, const Pixel& color) noexcept;
 
 		// Static Methods
 
