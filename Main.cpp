@@ -13,6 +13,9 @@ int main(int argc, char** argv)
 
 	while (app.IsRunning())
 	{
+		app.DrawPixel(5, 5);
+		app.DrawPixel(5, 6);
+		app.DrawPixel(5, 7);
 		app.DrawString("Hello, World!");
 		app.HandleEvents();
 	}

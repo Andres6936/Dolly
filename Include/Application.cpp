@@ -104,6 +104,12 @@ void Dolly::Application::DrawString(std::string_view _string) noexcept
 			_string.data(), _string.size());
 }
 
+void Dolly::Application::DrawPixel(const std::uint32_t x, const std::uint32_t y) noexcept
+{
+	XSetForeground(app.GetPointerDisplay(), graphicContext, 42000);
+	XDrawPoint(app.GetPointerDisplay(), window, graphicContext, x, y);
+}
+
 void Dolly::Application::Resize(const std::uint32_t _width, const std::uint32_t _height) noexcept
 {
 	// Redefine the width and height of window
