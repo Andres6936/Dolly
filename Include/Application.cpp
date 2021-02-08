@@ -139,10 +139,15 @@ void Dolly::Application::DrawPixel(const std::uint32_t x, const std::uint32_t y,
 	// 0 to 65535, with 65535 giving the maximum amount of colour.
 	XColor xColor;
 
+	// The use of the magic number is get from follow
+	// formulae: 255 (Max value for a pixel in Pixel class) * x (The magic
+	// number) = 65535 (Max value for a pixel in X Server)
 	xColor.red = color.GetRed() * 257;
 	xColor.green = color.GetGreen() * 257;
 	xColor.blue = color.GetBlue() * 257;
 
+	// Before calling XAllocColor, the red, green and blue fields of color must
+	// be set to the desired color.
 	// The XAllocColor() function allocates a read-only colorMap entry
 	// corresponding to the closest RGB value supported by the hardware.
 	XAllocColor(app.GetPointerDisplay(), colorMap, &xColor);
