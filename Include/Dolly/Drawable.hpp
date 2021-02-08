@@ -5,7 +5,7 @@
 #include <X11/Xutil.h>
 #include <X11/Xos.h>
 
-#include "Core.hpp"
+#include <Dolly/Core.hpp>
 
 namespace Dolly
 {

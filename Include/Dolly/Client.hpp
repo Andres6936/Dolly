@@ -7,7 +7,7 @@
 
 #include <string_view>
 
-#include "Core.hpp"
+#include <Dolly/Core.hpp>
 
 namespace Dolly
 {

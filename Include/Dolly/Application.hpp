@@ -5,15 +5,14 @@
 #include <X11/Xutil.h>
 #include <X11/Xos.h>
 
-#include "Client.hpp"
-#include "Core.hpp"
-
 #include <cstdint>
 #include <string_view>
 
-#include <Geometry/Point2D.hpp>
-#include <Geometry/Size.hpp>
-#include <Graphics/Pixel.hpp>
+#include <Dolly/Core.hpp>
+#include <Dolly/Client.hpp>
+#include <Dolly/Geometry/Point2D.hpp>
+#include <Dolly/Geometry/Size.hpp>
+#include <Dolly/Graphics/Pixel.hpp>
 
 namespace Dolly
 {
