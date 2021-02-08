@@ -100,7 +100,8 @@ int Dolly::Application::HandleEvents()
 
 void Dolly::Application::DrawString(std::string_view _string) noexcept
 {
-	XDrawImageString(app.GetPointerDisplay(), window, graphicContext, 50, 50, "Hello", 5);
+	XDrawImageString(app.GetPointerDisplay(), window, graphicContext, 50, 50, _string.data(),
+			_string.size());
 }
 
 void Dolly::Application::Resize(const std::uint32_t _width, const std::uint32_t _height) noexcept
