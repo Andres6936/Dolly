@@ -16,6 +16,14 @@ namespace Dolly
 	 * This proportion is specified using one byte (range 0 to 255), so that
 	 * the most intense pure white (mixture of all colors) would be the color
 	 * (255,255,255), while black (absence of color) would be (0,0,0).
+	 *
+	 * Whenever a color is specified, it is specified as a triplet (R,G,B) that
+	 * defines how much red (R value), green (G) and blue (B) make up that
+	 * color. These three values are called RGB components of the color. Thus, a
+	 * medium intense red could be defined as (128,0,0) (128 of red and none of
+	 * the other 2 components). In this way (mixing these three components with
+	 * the different intensities 0-255) we can obtain up to 256*256*256 = 16.7
+	 * million different colors.
 	 */
 	class Pixel
 	{
