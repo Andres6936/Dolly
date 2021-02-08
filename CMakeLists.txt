@@ -7,11 +7,11 @@ INCLUDE_DIRECTORIES(Library)
 LINK_DIRECTORIES(${CMAKE_SOURCE_DIR}/Library/Levin)
 
 ADD_LIBRARY(Dolly STATIC
-        Include/Graphics/Pixel.cpp
-        Include/Application.cpp
-        Include/Drawable.cpp
-        Include/Client.cpp
-        Include/Core.cpp
+        Source/Graphics/Pixel.cpp
+        Source/Application.cpp
+        Source/Drawable.cpp
+        Source/Client.cpp
+        Source/Core.cpp
         )
 SET_TARGET_PROPERTIES(Dolly PROPERTIES CXX_STANDARD 17)
 TARGET_LINK_LIBRARIES(Dolly PRIVATE X11)
