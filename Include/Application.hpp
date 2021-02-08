@@ -22,6 +22,11 @@ namespace Dolly
 	private:
 
 		/**
+		 * Determine if the window continue sending events to X Server.
+		 */
+		bool running = true;
+
+		/**
 		 * The graphic context.
 		 */
 		GC graphicContext;
@@ -60,6 +65,8 @@ namespace Dolly
 
 		int MainLoop();
 
+		void DrawString(std::string_view _string) noexcept;
+
 		void Resize(const std::uint32_t _width, const std::uint32_t _height) noexcept;
 
 		void ResizeAndCenter(const std::uint32_t _width, const std::uint32_t _height) noexcept;
@@ -71,6 +78,10 @@ namespace Dolly
 		 * information of X Server.
 		 */
 		static const Client& GetClient();
+
+		// Getters
+
+		bool IsRunning() const noexcept;
 
 		// Setters
 

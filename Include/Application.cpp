@@ -63,42 +63,44 @@ int Dolly::Application::MainLoop()
 {
 	XEvent event;
 
-	bool running = true;
+	// Gets the next event of any type on any window.
+	XNextEvent(app.GetPointerDisplay(), &event);
 
-	while (running)
+	switch (event.type)
 	{
-		// Gets the next event of any type on any window.
-		XNextEvent(app.GetPointerDisplay(), &event);
-
-		switch (event.type)
+	case Expose:
+		Levin::Info() << "Expose Event." << Levin::endl;
+		if (event.xexpose.count == 0)
 		{
-		case Expose:
-			Levin::Info() << "Expose Event." << Levin::endl;
-			if (event.xexpose.count == 0)
-			{
-				XDrawImageString(event.xexpose.display, event.xexpose.window, graphicContext,
-						50, 50, "Hello", 5);
-			}
-			break;
-		case ConfigureNotify:
-			Levin::Info() << "Configure Event." << Levin::endl;
-			break;
-		case ButtonPress:
-			Levin::Info() << "Button Event." << Levin::endl;
-			break;
-		case KeyPress:
-			Levin::Info() << "Key Event." << Levin::endl;
-			break;
-		case ClientMessage:
-			// If the client close the main window.
-			if (event.xclient.data.l[0] == wmDeleteMessage) running = false;
-		default:
-			Levin::Info() << "Default Event." << Levin::endl;
-			break;
+			// XDrawImageString(event.xexpose.display, event.xexpose.window, graphicContext, 50, 50, "Hello", 5);
 		}
+		break;
+	case ConfigureNotify:
+		Levin::Info() << "Configure Event." << Levin::endl;
+		break;
+	case ButtonPress:
+		Levin::Info() << "Button Event." << Levin::endl;
+		break;
+	case KeyPress:
+		Levin::Info() << "Key Event." << Levin::endl;
+		break;
+	case ClientMessage:
+		// If the client close the main window.
+		if (event.xclient.data.l[0] == wmDeleteMessage)
+		{
+			running = false;
+		}
+	default:
+		Levin::Info() << "Default Event." << Levin::endl;
+		break;
 	}
 
 	return 0;
+}
+
+void Dolly::Application::DrawString(std::string_view _string) noexcept
+{
+	XDrawImageString(app.GetPointerDisplay(), window, graphicContext, 50, 50, "Hello", 5);
 }
 
 void Dolly::Application::Resize(const std::uint32_t _width, const std::uint32_t _height) noexcept
@@ -124,6 +126,13 @@ void Dolly::Application::ResizeAndCenter(const std::uint32_t _width, const std::
 const Dolly::Client& Dolly::Application::GetClient()
 {
 	return app;
+}
+
+// Getters
+
+bool Dolly::Application::IsRunning() const noexcept
+{
+	return running;
 }
 
 // Setters
