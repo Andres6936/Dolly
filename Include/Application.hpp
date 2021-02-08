@@ -49,6 +49,11 @@ namespace Dolly
 		XSizeHints sizeHint;
 
 		/**
+		 * Needed for set and get colors to/from pixels.
+		 */
+		Colormap colorMap;
+
+		/**
 		 * The only instance of app in
 		 * all execution of program.
 		 */

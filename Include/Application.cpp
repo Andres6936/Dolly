@@ -43,6 +43,8 @@ Dolly::Application::Application(int argc, char** argv)
 	// WM_DELETE_WINDOW.
 	wmDeleteMessage = XInternAtom(app.GetPointerDisplay(), "WM_DELETE_WINDOW", false);
 	XSetWMProtocols(app.GetPointerDisplay(), window, &wmDeleteMessage, 1);
+
+	colorMap = DefaultColormap(app.GetPointerDisplay(), DefaultScreen(app.GetPointerDisplay()));
 }
 
 Dolly::Application::~Application()
@@ -128,7 +130,15 @@ void Dolly::Application::ResizeAndCenter(const std::uint32_t _width,
 void Dolly::Application::DrawPixel(const std::uint32_t x, const std::uint32_t y,
 		const Pixel& color) noexcept
 {
-	XSetForeground(app.GetPointerDisplay(), graphicContext, 42000);
+	XColor xColor;
+
+	xColor.red = color.GetRed() * 257;
+	xColor.green = color.GetGreen() * 257;
+	xColor.blue = color.GetBlue() * 257;
+
+	XAllocColor(app.GetPointerDisplay(), colorMap, &xColor);
+
+	XSetForeground(app.GetPointerDisplay(), graphicContext, xColor.pixel);
 	XDrawPoint(app.GetPointerDisplay(), window, graphicContext, x, y);
 }
 
