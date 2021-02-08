@@ -30,13 +30,13 @@ namespace Dolly
 
 		// Setters
 
-		void SetRed(const uint32_t r) noexcept;
+		void SetRed(uint32_t r) noexcept;
 
-		void SetGreen(const uint32_t g) noexcept;
+		void SetGreen(uint32_t g) noexcept;
 
-		void SetBlue(const uint32_t b) noexcept;
+		void SetBlue(uint32_t b) noexcept;
 
-		void SetAlpha(const uint32_t a) noexcept;
+		void SetAlpha(uint32_t a) noexcept;
 
 		// Getters
 
