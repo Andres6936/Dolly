@@ -2,8 +2,7 @@
 
 #include <memory>
 #include <iostream>
-#include <Levin/Log.h>
-#include <Levin/Logger.h>
+#include <Levin/Log.hpp>
 
 Dolly::Client::Client() noexcept
 {
@@ -11,7 +10,7 @@ Dolly::Client::Client() noexcept
 	// @see Documentation of member variable display.
 	if (display == nullptr)
 	{
-		Levin::Error() << "Can't is possible connect to X server." << Levin::endl;
+		Levin::Log::Error("Can't is possible connect to X server.");
 		// Terminate the program, Can't continue without the display and a
 		// connection to X Server.
 		std::terminate();
@@ -96,7 +95,7 @@ void Dolly::Client::GetGeometryInformationAboutDisplay()
 	if (not XGetGeometry(display, GetWindowDisplay(), &infoDisplay,
 			&x, &y, &width, &height, &borderWidth, &depth))
 	{
-		Levin::Error() << "Can't get display window geometry." << Levin::endl;
+		Levin::Log::Error("Can't get display window geometry.");
 		// Terminate the program, no is possible continue
 		// without the information of infoDisplay window.
 		std::terminate();

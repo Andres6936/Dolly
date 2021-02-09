@@ -1,6 +1,6 @@
 #include "Dolly/Application.hpp"
 
-#include <Levin/Log.h>
+#include <Levin/Log.hpp>
 
 Dolly::Application::Application(int argc, char** argv)
 {
@@ -75,20 +75,20 @@ int Dolly::Application::HandleEvents()
 	switch (event.type)
 	{
 	case Expose:
-		Levin::Info() << "Expose Event." << Levin::endl;
+		Levin::Log::Informational("Expose Event.");
 		if (event.xexpose.count == 0)
 		{
 			// XDrawImageString(event.xexpose.display, event.xexpose.window, graphicContext, 50, 50, "Hello", 5);
 		}
 		break;
 	case ConfigureNotify:
-		Levin::Info() << "Configure Event." << Levin::endl;
+		Levin::Log::Informational("Configure Event.");
 		break;
 	case ButtonPress:
-		Levin::Info() << "Button Event." << Levin::endl;
+		Levin::Log::Informational("Button Event.");
 		break;
 	case KeyPress:
-		Levin::Info() << "Key Event." << Levin::endl;
+		Levin::Log::Informational("Key Event.");
 		break;
 	case ClientMessage:
 		// If the client close the main window.
@@ -97,7 +97,7 @@ int Dolly::Application::HandleEvents()
 			running = false;
 		}
 	default:
-		Levin::Info() << "Default Event." << Levin::endl;
+		Levin::Log::Informational("Default Event.");
 		break;
 	}
 
