@@ -23,8 +23,11 @@ TARGET_LINK_LIBRARIES(Dolly.App PRIVATE Dolly)
 # Try to find X11 on UNIX systems.
 FIND_PACKAGE(X11)
 
+# True if X11 is available
 IF (X11_FOUND)
+    # Link against these to use X11
     TARGET_LINK_LIBRARIES(Dolly PRIVATE ${X11_LIBRARIES})
+    # Include directories to use X11
     TARGET_INCLUDE_DIRECTORIES(Dolly PRIVATE ${X11_INCLUDE_DIR})
 ELSE ()
     MESSAGE(FATAL_ERROR "Not is possible found X11 in the System.")
