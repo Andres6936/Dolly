@@ -11,12 +11,16 @@ int main(int argc, char** argv)
 	app.SetMinSize(300, 300);
 	app.SetMaxSize(700, 700);
 
+	for (std::size_t x = 0; x < 500; x += 1)
+	{
+		for (std::size_t y = 0; y < 500; y += 1)
+		{
+			app.DrawPixel(x, y, { 255, 0, 0 });
+		}
+	}
+
 	while (app.IsRunning())
 	{
-		app.DrawPixel(5, 5, { 255, 0, 0 });
-		app.DrawPixel(5, 6, { 0, 255, 0 });
-		app.DrawPixel(5, 7, { 0, 0, 255 });
-		app.DrawString("Hello, World!");
 		app.HandleEvents();
 	}
 }
