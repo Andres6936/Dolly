@@ -1,7 +1,6 @@
-#include "Drawable.hpp"
-
-#include "Client.hpp"
-#include "Application.hpp"
+#include "Dolly/Drawable.hpp"
+#include "Dolly/Client.hpp"
+#include "Dolly/Application.hpp"
 
 Dolly::Drawable::Drawable()
 {

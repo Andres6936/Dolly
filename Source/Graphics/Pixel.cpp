@@ -1,6 +1,6 @@
 // Joan Andrés (@Andres6936) Github.
 
-#include "Graphics/Pixel.hpp"
+#include "Dolly/Graphics/Pixel.hpp"
 
 using namespace Dolly;
 
